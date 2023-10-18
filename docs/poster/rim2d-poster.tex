@@ -41,27 +41,27 @@
 		
 		\section{Introduction}
 		\begin{itemize}
-			\item Impact-based forecasting (IBF) aims to support risk-oriented decisions in disaster risk management by promoting anticipatory actions that minimize damage and loss of life from natural hazards.
-			\item The floodplain inundation data is required for impact functions that demonstrate the relationship between inundation depth and displacement probability, as well as economic damage to buildings, roads, and commercial/agriculture land use categories.
-			\item Currently IBF uses hydrological model streamflow rate forecasts in conjunction with historical flood hazard maps to derive inundation maps, but this method lacks specificity in capturing rainfall-induced catchment and flash flood processes, especially in riverine and urban areas.
-			\item In this study, we tested the hydrodynamic model LISFLOOD-FP \cite{sharifian2023lisflood} for impact-based forecasting and assessed the operational IBF suitability of the parsimonious, simplified model RIM2D \cite{apel2022brief}.
+			\item Impact-based forecasting (IBF) supports risk-oriented decisions in disaster risk management by emphasizing anticipatory actions that minimize damage and loss.
+			\item Inundation forecasting is essential for IBF hazard modeling and use with impact functions, linking flood water depth to displacement risks and damage to infrastructure.
+			\item Currently, IBF uses hydrological forecasts combined with historical maps for inundation data from stream flow forecasts, but it struggles to capture urban and riverine rainfall-induced floods. Although hydrodynamic modeling is precise, it is too computationally intensive for routine IBF.
+			\item A parsimonious modeling framework that balances the complexity and simplicity of hydrodynamic processes might be a promising approach for generating inundation data.
+			\item Current study evaluated the hydrodynamic model LISFLOOD-FP \cite{sharifian2023lisflood} for its potential in impact-based forecasting. We also assessed the operational IBF suitability of the parsimonious, simplified model RIM2D \cite{apel2022brief}.
 			
 		\end{itemize}
 		
 		\section{Methods}
-		\\ Method used for compare the LISFLOOD-FP and RIM2D operational purpose in Cloud computer.
+		\\ The Figure shows the method used to compare LISFLOOD-FP and RIM2D for operational use in cloud computing.
 		\begin{center}
 		%\begin{figure}[h!]	
-			\includegraphics[width=\textwidth]{img/rim2d.png}
-			\captionof{figure}{\LARGE{GPU version of the models are used in similar GPU Cloud Computing setup}}
+			\includegraphics[width=\textwidth]{img/rim2d-v2.png}
+			\captionof{figure}{\LARGE{The GPU versions of the models are used in a similar GPU cloud computing setup.}}
 		%\end{figure}
 		\end{center}
 		
 	    \section{Results}
 		\begin{itemize}
-			\item Test case simulations indicate RIM2D is more efficient for operational IBF due to its parsimonious hydrological modeling approach, making it apt for IBF risk measures.
-			\item The validity of RIM2D's hydrodynamic modeling in East Africa is underway; the provided GitHub repository details the Python programs and cloud setup for the model.
-	
+			\item Test case simulations indicate that RIM2D is more efficient for operational IBF due to its parsimonious hydrological modeling approach, making it suitable for IBF risk measures.
+			\item The validation of RIM2D's hydrodynamic modeling in East Africa is ongoing; the supporting materials detail the Python programs and cloud setup for the model.
 			%\item Study is ongoing to extend the application
 		\end{itemize}
 		%% Institution logo
@@ -94,8 +94,8 @@
 		}{
 			%%%% Bottom space
 			\qrcode{img/qrcode-rim2d}{img/smartphoneWhite}{
-				\textbf{Scan here} to proceed
-				\\Github repo project
+				\textbf{Scan the QR Code} for \\ supporting materials
+				\\ \textbf{@ GitHub Repository:}
 				\\icpac-igad/rim2d-ibf
 				\\\textbf{For comments and questions}
 				\\icpac-igad/rim2d-ibf/issues
