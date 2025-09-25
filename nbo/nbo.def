@@ -1,0 +1,74 @@
+# CALCULATION OF URBAN FLOODING BASED ON 2D hydraulic GPU code
+# Nairobi flood simulation for April 2024 event
+# num_device of GPU card to be used to run the simulation
+0
+# input,output and parameter definition file
+###### INPUT FILE SPECIFICATIONS ######
+# DEM-ASCII GRID FILE
+./input/Nairobi_DEM_housesnodata.asc
+# Raster with mask for sewershed
+./input/Nairobi_sewershed.asc
+# DELIMITED TEXT FILE with INFLOW locations as grid cell numbers (row,column) in column 1 and 2 followed by absolute water depths in columns per inflow cell
+./input/fluvial_boundary_none.txt
+# path and name of IMPERVIOUS AREAS GRID
+./input/Nairobi_sealed_surface.asc
+# path and name of PERVIOUS AREAS GRID
+./input/Nairobi_pervious_surface.asc
+# path and name of HOUSES GRID (ROOFS)
+./input/Nairobi_OSM_buildings.asc
+# ROUGHNESS (when homo = constant Manning roughness value, when file = path and name to Manning roughness ASCII grid)
+file
+./input/Nairobi_roughness.asc
+# INITIAL WATER DEPTHS (when homo = constant values, when file = path and file name of IWD ASCII grid)
+homo
+0.0
+# RAINFALL SCENARIOS DEFINITION AND FILE NAMES
+# number of precipitation files (raster grids) per rainfall event
+96
+# time step between precipitation files in seconds
+900
+# time of first precipitation file / precipitation start (0 if right from the start)
+0
+# base path and name of precipitation files
+./input/rain/Nairobi_202404_t
+###### OUTPUT FILE SPECIFICATIONS ######
+# output_grid-file base name
+./output/Nairobi_202404_flood_
+# data file with OUTFLOW locations as grid cells numbers (row,column) in column 1 and 2
+./input/outflowlocs_zero_template.txt
+# n° of satellite images, i.e. desired spatial distributed outputs during simulation time, e.g. for calibration/validation
+20
+# timing of output maps (in seconds and from the simulation starting time); number of entries (in lines) as specified above
+3600  7200  10800  14400  18000  21600  25200  28800  32400  36000  39600  43200  46800  50400  54000  57600  61200  64800  68400  72000
+###### SIMULATION PARAMETERS ######
+# calculation time step (in seconds)
+1
+# simulation duration (in seconds)
+86400
+# constant (equilibrium) infiltration rate in mm/h
+15
+# sewer capacity in mm/h
+20
+# water depth threshold for activation of sewer system, in [m]
+0.002
+# alpha value for adaptive time step calculation (usually 0.6-0.8, but should be lower for extreme hydraulic situation, e.g. shock flow over dry surface, or with high resolution DEM, recommended 0.2-0.4)
+0.5
+# theta value for diffusion in numerics of q-calculation [0-1]: 1 means no diffusion, 0 maximum diffusion
+0.95
+# verbose flag for printing output from GPU: .TRUE. -> output is printed, .FALSE. -> no output printed
+.FALSE.
+# flag for routing, i.e. running the GPU kernels
+.TRUE.
+# superverbose flag for printing detailed output for debugging: -> output is printed, .FALSE. -> no output printed
+.FALSE.
+# neg_wd_corr flag for correcting negative water depths
+.TRUE.
+# flag for sewer sub-catchments: .FALSE. or .TRUE. if .TRUE., file name and path to sewer sub-catchment grid MUST be given in following line; if .FALSE. the entry in next line is discarded (but it must be there!!)
+.FALSE.
+./input/Nairobi_sewer_subcatchments.asc
+# flag for grid with fluvial boundary mask: .FALSE. or .TRUE. if .TRUE., file name and path to fluvial boundary mask grid MUST be given in following line, otherwise 'none'
+.FALSE.
+none
+# ! flag for writing full set of output files, i.e. max water depths and qx, qy at every output time step (.TRUE. or .FALSE.)
+.FALSE.
+# end
